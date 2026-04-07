@@ -21,6 +21,9 @@ EXCLUDED_PATTERNS=(
     "dist"
     "logs"
     "*.log"
+    "coverage"
+    ".husky"
+    ".vscode"
 )
 
 build_find_excludes() {
@@ -36,7 +39,7 @@ show_help() {
 Usage: $(basename "$0") [OPTIONS]
 
 Bundle all files from specified directories into a single markdown file.
-Excludes: .git, node_modules, debug, outputs, out, tmp, *.tmp, dist, logs, *.log by default.
+Excludes: $(echo "${EXCLUDED_PATTERNS[*]}") by default.
 
 OPTIONS:
     -h, --help              Show this help message
