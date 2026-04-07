@@ -50,7 +50,7 @@ ia-stack/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/palcarzm/ia-stack.git
+git clone https://github.com/palcarazm/ia-stack.git
 cd ia-stack
 
 # 2. Make scripts executable
@@ -71,14 +71,14 @@ cat outputs/bundle.md
 ## 🛠️ Installation
 ### From GitHub
 ```bash
-git clone https://github.com/palcarzm/ia-stack.git
+git clone https://github.com/palcarazm/ia-stack.git
 cd ia-stack
 chmod +x scripts/*.sh
 ```
 
 ### As a Git Submodule (for other projects)
 ```bash
-git submodule add https://github.com/palcarzm/ia-stack.git .ia-stack
+git submodule add https://github.com/palcarazm/ia-stack.git .ia-stack
 ln -s .ia-stack/scripts scripts
 ln -s .ia-stack/prompts prompts
 ```

@@ -45,7 +45,7 @@ To ensure a smooth contribution process, please follow the guidelines below.
 # Fork the repository on GitHub first, then:
 git clone https://github.com/YOUR_USERNAME/ia-stack.git
 cd ia-stack
-git remote add upstream https://github.com/palcarzm/ia-stack.git
+git remote add upstream https://github.com/palcarazm/ia-stack.git
 ```
 
 ### 2. Keep Your Fork Updated
@@ -235,8 +235,8 @@ Our Code of Conduct is based on the [Contributor Covenant](https://www.contribut
 ## 📧 Contact
 
 For questions, suggestions, or security issues:
-- **GitHub Discussions:** [Q&A Section](https://github.com/palcarzm/ia-stack/discussions/categories/q-a)
-- **Issues:** [GitHub Issues](https://github.com/palcarzm/ia-stack/issues)
+- **GitHub Discussions:** [Q&A Section](https://github.com/palcarazm/ia-stack/discussions/categories/q-a)
+- **Issues:** [GitHub Issues](https://github.com/palcarazm/ia-stack/issues)
 
 
 ---
