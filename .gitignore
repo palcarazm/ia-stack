@@ -1,0 +1,4 @@
+*.generated.md
+/outputs/
+/logs/
+*.log
