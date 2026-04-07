@@ -78,7 +78,7 @@ echo "" | tee -a "$OUTPUT_FILE"
 # ============================================
 echo "## Project structure" | tee -a "$OUTPUT_FILE"
 echo '```bash' >> "$OUTPUT_FILE"
-tree src/main/ts src/main/css src/test test cypress/e2e cypress/support docs/src | tee -a "$OUTPUT_FILE"
+git ls-tree -r --name-only HEAD | tree --fromfile | tee -a "$OUTPUT_FILE"
 echo '```' >> "$OUTPUT_FILE"
 echo "" | tee -a "$OUTPUT_FILE"
 
