@@ -1,11 +1,12 @@
 ---
 name: implement
-version: 1.0.0
+version: 1.1.0
 description: |
   Implements a feature or issue based on current codebase context. Outputs structured code
   with explanation, file tree, and exact changes. Use when given an issue or feature spec.
 scripts:
   - bundle.sh
+  - fetch-issue.sh
 ---
 
 ## Aim & Scope
