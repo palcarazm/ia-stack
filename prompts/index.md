@@ -9,12 +9,14 @@ This index documents all reusable prompts in the `ia-stack` collection. Each pro
 
 ## Quick Reference
 
-| Prompt                              | Purpose                              |
-| ----------------------------------- | ------------------------------------ |
-| [`code-review`](code-review.md)     | Professional code review             |
-| [`implement`](implement.md)         | Implement feature from spec          |
-| [`commit`](commit.md)               | Generate Conventional Commit message |
-| [`pull-request`](pull-request.md)   | Generate PR description              |
-| [`release-notes`](release-notes.md) | Generate release notes               |
+| Prompt                                  | Purpose                              |
+| --------------------------------------- | ------------------------------------ |
+| [`code-review`](code-review.md)         | Professional code review             |
+| [`commit`](commit.md)                   | Generate Conventional Commit message |
+| [`feature-request`](feature-request.md) | Generate a feature request           |
+| [`implement`](implement.md)             | Implement feature from spec          |
+| [`pull-request`](pull-request.md)       | Generate PR description              |
+| [`release-notes`](release-notes.md)     | Generate release notes               |
+| [`roadmap-planner`](roadmap-planner.md) | Generate a product roadmap           |
 
 ---
