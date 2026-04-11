@@ -87,8 +87,7 @@ echo "" | tee -a "$OUTPUT_FILE"
 # ============================================
 echo "## Clean Install" | tee -a "$OUTPUT_FILE"
 echo '```bash' >> "$OUTPUT_FILE"
-rm -rf node_modules package-lock.json | tee -a "$OUTPUT_FILE"
-npm install --include=optional --include=peer | tee -a "$OUTPUT_FILE"
+npm ci --include=optional --include=peer | tee -a "$OUTPUT_FILE"
 echo '```' >> "$OUTPUT_FILE"
 echo "" | tee -a "$OUTPUT_FILE"
 
@@ -96,7 +95,7 @@ echo "" | tee -a "$OUTPUT_FILE"
 # Type Check (tsc --noEmit)
 # ============================================
 echo "## Type Check (tsc --noEmit)" | tee -a "$OUTPUT_FILE"
-if command -v tsc &> /dev/null; then
+if npm list typescript --depth=0 &> /dev/null; then
     TYPE_CHECK_OUTPUT=$(npx tsc --noEmit 2>&1)
     if [ -z "$TYPE_CHECK_OUTPUT" ]; then
         echo "✅ No type errors detected" | tee -a "$OUTPUT_FILE"
@@ -173,7 +172,7 @@ echo "" | tee -a "$OUTPUT_FILE"
 # ============================================
 echo "## Generated build artifacts" | tee -a "$OUTPUT_FILE"
 echo '```bash' >> "$OUTPUT_FILE"
-tree js css | tee -a "$OUTPUT_FILE"
+tree js css dist | tee -a "$OUTPUT_FILE"
 echo '```' >> "$OUTPUT_FILE"
 echo "" | tee -a "$OUTPUT_FILE"
 

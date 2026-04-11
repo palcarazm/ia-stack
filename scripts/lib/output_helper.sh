@@ -27,13 +27,31 @@ init_output_file() {
 }
 
 # Add a common header to output files
-# Usage: add_header "$OUTPUT_FILE" "Report Title"
+# Usage: add_header "$OUTPUT_FILE" "Report Title" ["key1: value1\nkey2: value2"]
+# The third parameter is optional and accepts newline-separated key-value pairs
 add_header() {
     local output_file="$1"
     local title="$2"
+    local extra_metadata="${3:-}"  # Optional third parameter
     
-    echo "# $title" >> "$output_file"
+    echo "---" >> "$output_file"
+    echo "Title: $title" >> "$output_file"
     echo "Generated: $(date '+%Y-%m-%d %H:%M:%S')" >> "$output_file"
+    
+    # Add extra metadata if provided
+    if [ -n "$extra_metadata" ]; then
+        # Preserve newlines and add each line
+        while IFS= read -r line; do
+            if [ -n "$line" ]; then
+                echo "$line" >> "$output_file"
+            fi
+        done <<< "$extra_metadata"
+    fi
+    
+    echo "---" >> "$output_file"
+    echo "" >> "$output_file"
+
+    echo "# $title" >> "$output_file"
     echo "" >> "$output_file"
 }
 
