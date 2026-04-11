@@ -12,15 +12,16 @@ This index documents all bash scripts in the `ia-stack` collection. Each script 
 
 ## Quick Reference
 
-| Script                                 | Purpose                                     | Output File             | Dependencies         |
-| -------------------------------------- | ------------------------------------------- | ----------------------- | -------------------- |
-| [`bundle.sh`](bundle.sh)               | Bundle project files into a single markdown | `outputs/bundle.md`     | `find`               |
-| [`diff.sh`](diff.sh)                   | Capture staged git changes                  | `outputs/diff.md`       | `git`                |
-| [`fetch-issue.sh`](fetch-issue.sh)     | Fetch an issue from Github                  | `outputs/issue.md`      | `git`, `jq`          |
-| [`log.sh`](log.sh)                     | Unified interface for log scripts           | Varies                  | `git`                |
-| - [`log-complete.sh`](log-complete.sh) | Full commit history (HEAD)                  | `outputs/log.md`        | `git`                |
-| - [`log-branch.sh`](log-branch.sh)     | Compare branches                            | `outputs/log-branch.md` | `git`                |
-| - [`log-tag.sh`](log-tag.sh)           | Commits from last tag to HEAD               | `outputs/log-tag.md`    | `git`                |
-| [`validate.sh`](validate.sh)           | Project validation report                   | `outputs/validate.md`   | `npm`, `git`, `tree` |
+| Script                                      | Purpose                                     | Output File             | Dependencies         |
+| ------------------------------------------- | ------------------------------------------- | ----------------------- | -------------------- |
+| [`bundle.sh`](bundle.sh)                    | Bundle project files into a single markdown | `outputs/bundle.md`     | `find`               |
+| [`diff.sh`](diff.sh)                        | Capture staged git changes                  | `outputs/diff.md`       | `git`                |
+| [`fetch-all-issue.sh`](fetch-all-issues.sh) | Fetch all issues from Github                | `outputs/issues.md`     | `git`, `jq`          |
+| [`fetch-issue.sh`](fetch-issue.sh)          | Fetch an issue from Github                  | `outputs/issue.md`      | `git`, `jq`          |
+| [`log.sh`](log.sh)                          | Unified interface for log scripts           |                         |                      |
+| - [`log-complete.sh`](log-complete.sh)      | Full commit history (HEAD)                  | `outputs/log.md`        | `git`                |
+| - [`log-branch.sh`](log-branch.sh)          | Compare branches                            | `outputs/log-branch.md` | `git`                |
+| - [`log-tag.sh`](log-tag.sh)                | Commits from last tag to HEAD               | `outputs/log-tag.md`    | `git`                |
+| [`validate.sh`](validate.sh)                | Project validation report                   | `outputs/validate.md`   | `npm`, `git`, `tree` |
 
 ---
