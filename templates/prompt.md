@@ -45,8 +45,19 @@ These are non-negotiable:
 - End with the assignment. Every session should produce one concrete action, not a strategy.
 
 ---
+## Phase 1: <phase title>
+<Phase description including what must be do and what mustn't be do. e.g.:
+> [!IMPORTANT]
+> **Do NOT write any code in this phase.**
+> **⚠️ NO CODE IMPLEMENTATION IN THIS PHASE ⚠️**
 
-## Expected Output Format
+Before implementing, you MUST:
+1. **List assumptions** you are making about the spec or codebase.
+2. **Flag ambiguities** or missing information in the spec.
+4. **Wait for the user's validation of assumptions and clarifying ambiguities** before proceeding to next phase.
+>
+
+### Expected Output Format
 > [!IMPORTANT]
 > If you need code blocks, use ''' (triple single quotes) instead of ``` (backticks).**
 
