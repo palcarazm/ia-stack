@@ -1,0 +1,27 @@
+{
+  "name": "ia-stack",
+  "version": "1.0.0",
+  "description": "A curated collection of bash commands, scripts, and reusable prompts for AI interaction. Human-orchestrated pipeline to generate markdown files and manage AI-assisted workflows. No agents — just CLI and copy-paste.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/palcarazm/ia-stack.git"
+  },
+  "author": {
+    "name": "Pablo Alcaraz Martínez",
+    "url": "https://github.com/palcarazm/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/palcarazm/ia-stack/issues"
+  },
+  "homepage": "https://github.com/palcarazm/ia-stack#readme",
+  "dependencies": {
+    "fs-extra": "^11.3.4",
+    "gray-matter": "^4.0.3"
+  }
+}

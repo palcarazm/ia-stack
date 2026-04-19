@@ -1,4 +1,19 @@
+# Node modules
+node_modules
+
+# Debug
+debug
+
+# Dist
 *.generated.md
 /outputs/
+dist/
+
+# Logs
 /logs/
 *.log
+
+# Cache and config dirs and files
+.vscode
+.dccache
+.DS_Store

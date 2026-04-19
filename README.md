@@ -38,9 +38,10 @@ You copy. You paste. You review. You commit.
 ## 📁 Project Structure
 ```bash
 ia-stack/
-├── outputs/ # Generated context files
-├── prompts/ # Reusable AI prompts
-├── scripts/ # Bash automation scripts
+├── outputs/   # Generated context files
+├── prompts/   # Reusable AI prompts
+├── scripts/   # Build Node JS scripts
+├── tools/     # Bash automation scripts
 └── templates/ # File templates
 
 ```
