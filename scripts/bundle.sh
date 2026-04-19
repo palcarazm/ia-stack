@@ -26,14 +26,6 @@ EXCLUDED_PATTERNS=(
     ".vscode"
 )
 
-build_find_excludes() {
-    local excludes=""
-    for pattern in "${EXCLUDED_PATTERNS[@]}"; do
-        excludes="$excludes -not -path \"*/$pattern/*\" -not -path \"*/$pattern\""
-    done
-    echo "$excludes"
-}
-
 show_help() {
     cat << EOF
 Usage: $(basename "$0") [OPTIONS]
@@ -88,38 +80,35 @@ echo "" >> "$OUTPUT_FILE"
 
 # Build find command with all excludes
 for dir in $DIRECTORIES; do
-    # Remove trailing slash if present
     dir="${dir%/}"
-    
-    # Check if directory exists
+
     if [ ! -d "$dir" ]; then
         echo "⚠️  Warning: Directory '$dir' does not exist, skipping" | tee -a "$OUTPUT_FILE"
         continue
     fi
-    
+
     echo "## Processing: \`$dir\`" | tee -a "$OUTPUT_FILE"
     echo "" >> "$OUTPUT_FILE"
-    
-    # Build find command with excludes
-    find_cmd="find \"$dir\" -type f"
-    
-    # Add default excludes
+
+    # Build exclusion regex
+    EXCLUDE_REGEX=""
     for pattern in "${EXCLUDED_PATTERNS[@]}"; do
-        find_cmd="$find_cmd -not -path \"*/$pattern/*\" -not -path \"*/$pattern\""
+        EXCLUDE_REGEX+="|$pattern"
     done
-    
-    # Add additional excludes from command line
     for pattern in "${ADDITIONAL_EXCLUDES[@]}"; do
-        find_cmd="$find_cmd -not -path \"*/$pattern/*\" -not -path \"*/$pattern\""
+        EXCLUDE_REGEX+="|$pattern"
     done
-    
-    # Execute find and process files
-    eval "$find_cmd" | while read -r file; do
-        # Calculate relative path (remove leading "./" if present)
-        relative_path="${file#./}"
-        
-        # Get file extension for syntax highlighting hint
+    # Remove leading |
+    EXCLUDE_REGEX="${EXCLUDE_REGEX#|}"
+
+    # Get only git-tracked files inside this directory, applying exclusions
+    git ls-files "$dir" \
+        | { if [ -n "$EXCLUDE_REGEX" ]; then grep -Ev "$EXCLUDE_REGEX"; else cat; fi; } \
+        | while read -r file; do
+
+        relative_path="$file"
         extension="${relative_path##*.}"
+
         case "$extension" in
             sh|bash|zsh) lang="bash" ;;
             js|ts) lang="javascript" ;;
@@ -132,13 +121,14 @@ for dir in $DIRECTORIES; do
             py) lang="python" ;;
             *) lang="" ;;
         esac
-        
+
         echo "- File \`$relative_path\`:" | tee -a "$OUTPUT_FILE"
         if [ -n "$lang" ]; then
             echo "\`\`\`$lang" >> "$OUTPUT_FILE"
         else
             echo '```' >> "$OUTPUT_FILE"
         fi
+
         cat "$file" >> "$OUTPUT_FILE"
         echo '```' >> "$OUTPUT_FILE"
         echo "" >> "$OUTPUT_FILE"
