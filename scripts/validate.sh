@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/lib/output_helper.sh"
 
 OUTPUT_RELATIVE="../../outputs/validate.md"
+CLEAN_INSTALL=false
 
 show_help() {
     cat << EOF
@@ -13,10 +14,11 @@ Usage: $(basename "$0") [OPTIONS]
 Run project validation and generate a markdown report file.
 
 OPTIONS:
-    -h, --help          Show this help message
+    -h, --help              Show this help message
+    -ci, --clean-install    Do a clean install in validation process
 
 EXAMPLE:
-    $(basename "$0")
+    $(basename "$0") -ci    // Validate with clean install
 EOF
     exit 0
 }
@@ -43,6 +45,10 @@ while [[ $# -gt 0 ]]; do
     case $1 in
         -h|--help)
             show_help
+            ;;
+        -ci|--clean-install)
+            CLEAN_INSTALL=true
+            shift
             ;;
         *)
             echo "Error: Unknown option: $1"
@@ -86,9 +92,14 @@ echo "" | tee -a "$OUTPUT_FILE"
 # Clean Install
 # ============================================
 echo "## Clean Install" | tee -a "$OUTPUT_FILE"
-echo '```bash' >> "$OUTPUT_FILE"
-npm ci --include=optional --include=peer | tee -a "$OUTPUT_FILE"
-echo '```' >> "$OUTPUT_FILE"
+
+if [ "$CLEAN_INSTALL" = true ]; then
+    echo '```bash' >> "$OUTPUT_FILE"
+    npm ci --include=optional --include=peer | tee -a "$OUTPUT_FILE"
+    echo '```' >> "$OUTPUT_FILE"
+else
+    echo "ℹ️ No clean install required" | tee -a "$OUTPUT_FILE"
+fi
 echo "" | tee -a "$OUTPUT_FILE"
 
 # ============================================
